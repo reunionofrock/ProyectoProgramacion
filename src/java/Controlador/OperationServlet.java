@@ -55,6 +55,7 @@ public class OperationServlet extends HttpServlet {
                 out.println("<h1> Que desea hacer? </h1>");
                 out.println("");
                 out.println("");
+                out.println("");
                 out.println("<p> Usuarios </p>"); 
                 out.println("<form action=\"RegistroUsuario\" method=\"post\">");
                 out.println("<input type=\"submit\" value=\"Usuario Nuevo?\" id=\"registro\" name=\"registro\"/> ");
