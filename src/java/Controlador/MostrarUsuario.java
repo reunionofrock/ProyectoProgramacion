@@ -45,9 +45,8 @@ public class MostrarUsuario extends HttpServlet {
             out.println("");
             out.println("");
             out.println("");
-            out.println("<form action=\"index.html\" method=\"post\">\n");
-            out.println("<input type=\"submit\" value=\"Regresar\" name=\"regresoButton\"/> \n");         
-            out.println("</form>");
+            //aqui hice los cambios mira solo agregue botones para navegacion 
+            out.println("<input type=\"submit\" onClick=\"history.back()\" value=\"Regresar\" name=\"regresoButton\"/> \n");
             out.println("</body>");
             out.println("</html>");
         }

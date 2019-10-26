@@ -50,6 +50,7 @@ public class RegistroEstudiante extends HttpServlet {
             out.println("<form onclick=guardar(); method=\"post\">\n");
             out.println("<input type=\"submit\" value=\"Registrar\" name=\"registrobutton\"/> \n");         
             out.println("</form>");
+             out.println("<input type=\"submit\" onClick=\"history.back()\" value=\"Regresar\" name=\"regresoButton\"/> \n");
             out.println("</body>");
             out.println("</html>");
         }
