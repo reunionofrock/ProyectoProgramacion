@@ -40,8 +40,7 @@ public class RegistroUsuario extends HttpServlet {
             out.println("<title>Registro de Usuario Nuevo</title>");            
             out.println("</head>");
             out.println("<h1>Crea un Usuario Nuevo </h1>");
-            out.println("<h1>Porfavor llene los siguientes campos</h1>");
-                        
+            out.println("<h1>Porfavor llene los siguientes campos</h1>");         
             out.println("<body>");
             out.println("<p>Ingrese nuevo Usuario: </p>");
             out.println("<p><input type=\"text\" name=\"user\" placeholder=\"Ingrese Id \" required spellchek=\"false\" > </p>");
@@ -50,9 +49,7 @@ public class RegistroUsuario extends HttpServlet {
             out.println("<form onclick=guardar(); method=\"post\">\n");
             out.println("<input type=\"submit\" value=\"Registrar\" name=\"registrobutton\"/> \n");         
             out.println("</form>");
-            out.println("<form onClick=\"history.back()\" method=\"post\">\n");
-            out.println("<input type=\"submit\" value=\"Regresar\" name=\"regresoButton\"/> \n");         
-            out.println("</form>");
+            out.println("<input type=\"submit\" onClick=\"history.back()\" value=\"Regresar\" name=\"regresoButton\"/> \n");         
             out.println("</body>");
             out.println("</html>");
         }
