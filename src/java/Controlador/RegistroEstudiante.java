@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author reuni
  */
-@WebServlet(name = "MostrarServlet", urlPatterns = {"/MostrarServlet"})
-public class MostrarServlet extends HttpServlet {
+@WebServlet(name = "RegistroEstudiante", urlPatterns = {"/RegistroEstudiante"})
+public class RegistroEstudiante extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,13 +34,22 @@ public class MostrarServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
+           out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet MostrarServlet</title>");            
+            out.println("<title>Registro de Usuario Nuevo</title>");            
             out.println("</head>");
+            out.println("<h1>Crea un Estudiante Nuevo </h1>");
+            out.println("<h1>Porfavor llene los siguientes campos</h1>");
+                        
             out.println("<body>");
-            out.println("<h1>Servlet MostrarServlet at " + request.getContextPath() + "</h1>");
+            out.println("<p>Ingrese nuevo ID de estudiante: </p>");
+            out.println("<p><input type=\"text\" name=\"estudiante\" placeholder=\"Ingrese Id \" required spellchek=\"false\" > </p>");
+            out.println("<p>Ingrese nueva Contraseña: </p>");
+            out.println("<p><input type=\"password\" name=\"passEstudiante\" placeholder=\"Ingrese contraseña\" required spellchek=\"false\" > </p>");
+            out.println("<form onclick=guardar(); method=\"post\">\n");
+            out.println("<input type=\"submit\" value=\"Registrar\" name=\"registrobutton\"/> \n");         
+            out.println("</form>");
             out.println("</body>");
             out.println("</html>");
         }
