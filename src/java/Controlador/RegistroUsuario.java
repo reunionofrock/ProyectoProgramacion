@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author reuni
  */
-@WebServlet(name = "RegistroServlet", urlPatterns = {"/RegistroServlet"})
-public class RegistroServlet extends HttpServlet {
+@WebServlet(name = "RegistroUsuario", urlPatterns = {"/RegistroUsuario"})
+public class RegistroUsuario extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -49,6 +49,9 @@ public class RegistroServlet extends HttpServlet {
             out.println("<p><input type=\"password\" name=\"pass\" placeholder=\"Ingrese contraseña\" required spellchek=\"false\" > </p>");
             out.println("<form onclick=guardar(); method=\"post\">\n");
             out.println("<input type=\"submit\" value=\"Registrar\" name=\"registrobutton\"/> \n");         
+            out.println("</form>");
+            out.println("<form onClick=\"history.back()\" method=\"post\">\n");
+            out.println("<input type=\"submit\" value=\"Regresar\" name=\"regresoButton\"/> \n");         
             out.println("</form>");
             out.println("</body>");
             out.println("</html>");
