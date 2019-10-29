@@ -3,7 +3,7 @@ package Modelo;
 
 public class PilaEstudiantes {
     
-        String nombre;
+    String nombre;
     String carnet;
     String fecha_nacimiento;
     

@@ -64,8 +64,7 @@ public class ColaEstudiantes {
         this.siguiente = siguiente;
     }
     
-    
-    
+       
     
     
     
