@@ -5,6 +5,8 @@
  */
 package Controlador;
 
+import Modelo.Lista;
+import Modelo.ListaUsuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -35,13 +38,40 @@ public class OperationServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             
-            //botones de accion
-            
+//            //botones de accion
+//            
             String user = request.getParameter("user");
             String pass = request.getParameter("pass");
+            //
+            // esto va del lado de del registro usuario
             
+//            ListaUsuario misUsuarios = new ListaUsuario();
+//            misUsuarios.push(user, pass);
+//            
+//           HttpSession session = request.getSession();
+//           Lista ListaU = null;
+//           ListaU = (Lista) session.getAttribute("ListaU");
+//           Lista nodo = new Lista(user,pass);
+//              nodo.setSiguiente(ListaU);
+//              ListaU = nodo;
+//              session.setAttribute("ListaU", ListaU);
+//        
+//            if (ListaU == null){
+//                ListaU = new Lista(user,pass);
+//                session.setAttribute("ListaU", ListaU);
+//            }else{
+//              Lista nodo1 = ListaU;
+//              while(nodo1!=null){
+//                 out.println("<h5>Datos " + nodo1.getContraseña() + nodo1.getUsuario() +" en Lista</h5>");               
+//                 nodo1 = nodo1.getSiguiente();
+//              }
+//              
+//            }
             
-           
+            // aqui lo que va es un pop ppara buscar si el usuario existe
+            
+            //ListaUsuario.pop();
+            
              if(user.equals("kzea")&&(pass.equals("umg123"))){
                 
              
@@ -99,10 +129,6 @@ public class OperationServlet extends HttpServlet {
                 out.println("</form>");
                 out.println("");
                 out.println("<p>El usuario no existe</p>");
-                out.println("<p>Desea registrar el usuario nuevo?</p>");
-                out.println("<form action=\"RegistroUsuario\" method=\"post\">");
-                out.println("<input type=\"submit\" value=\"Registro Usuario nuevo\" name=\"RegistroUsuario\"/>");
-                out.println("</form>");
                 out.println("</body>");
                 out.println("</html>");
                  
