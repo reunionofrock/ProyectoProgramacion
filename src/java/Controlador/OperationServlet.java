@@ -91,8 +91,33 @@ public class OperationServlet extends HttpServlet {
                 out.println("</form>");
                 out.println("");
                 out.println("<form action=\"MostrarUsuario\" method=\"post\">");
-                out.println("<input type=\"submit\" value=\"Lista de Usuarios?\" name=\"MostrarUsuario\"/>");
-                out.println("</form>");
+                out.println("<p> Lista de Usuarios </p>");
+                HttpSession session = request.getSession();
+                Lista ListaU = null;
+                ListaU = (Lista) session.getAttribute("ListaU");
+                Lista nodo = new Lista(user,pass);
+                nodo.setSiguiente(ListaU);
+                ListaU = nodo;
+                session.setAttribute("ListaU", ListaU);
+        
+                if (ListaU == null){
+                    ListaU = new Lista(user,pass);
+                    session.setAttribute("ListaU", ListaU);
+                }else{
+                    Lista nodo1 = ListaU;
+                    while(nodo1!=null){
+                    out.println("<h5>Datos " + nodo1.getContraseña() + nodo1.getUsuario() +" en Lista</h5>");               
+                    nodo1 = nodo1.getSiguiente();
+                }
+              
+            }
+                
+                
+                
+                out.println("");
+                out.println(""); 
+                out.println("");
+                out.println("");
                 out.println("");
                 out.println("");
                 out.println("<p> Estudiantes </p>");
