@@ -5,6 +5,7 @@
  */
 package Controlador;
 
+import Modelo.PilaEstudiante;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,13 +13,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author reuni
  */
-@WebServlet(name = "MostrarEstudiante", urlPatterns = {"/MostrarEstudiante"})
-public class MostrarEstudiante extends HttpServlet {
+@WebServlet(name = "EstudiantePila", urlPatterns = {"/EstudiantePila"})
+public class EstudiantePila extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,20 +36,33 @@ public class MostrarEstudiante extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet MostrarEstudiante</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Pagina en Construccion</h1>");
-            out.println("");
-            out.println("");
-            out.println("");
-            out.println("");
+            
+            String nombre = request.getParameter("nombre");
+            String carnet = request.getParameter("carnet");
+            String born = request.getParameter("born");
+            
+            HttpSession session = request.getSession();
+            PilaEstudiante ListaU = null;
+            ListaU = (PilaEstudiante) session.getAttribute("ListaU");
+            PilaEstudiante nodo = new PilaEstudiante(nombre, carnet, born);
+              nodo.setSiguiente(ListaU);
+              ListaU = nodo;
+              session.setAttribute("ListaU", ListaU);
+        
+            if (ListaU == null){
+                ListaU = new PilaEstudiante(nombre, carnet, born);
+                session.setAttribute("ListaU", ListaU);
+            }else{
+              PilaEstudiante nodo1 = ListaU;
+              while(nodo1!=null){
+                 out.println("<h5>Datos " + nodo1.getNombre() + nodo1.getCarnet() + nodo1.getBorn() +" en Pila</h5>");               
+                 nodo1 = nodo1.getSiguiente();
+              }
+              
              out.println("<input type=\"submit\" onClick=\"history.back()\" value=\"Regresar\" name=\"regresoButton\"/> \n");
             out.println("</body>");
             out.println("</html>");
+            }
         }
     }
 
@@ -91,4 +106,3 @@ public class MostrarEstudiante extends HttpServlet {
     }// </editor-fold>
 
 }
-            
