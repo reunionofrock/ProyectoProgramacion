@@ -5,7 +5,7 @@
  */
 package Modelo;
 
-import java.util.ArrayList;
+
 
 /**
  *
@@ -16,8 +16,7 @@ public class ListaUsuario {
     private Lista pInicio;
     private Lista pFin;
     int cElementos;
-    private ArrayList<Lista> listaRegistroUsuarios = new ArrayList();
-    /*private ModeloRU ListaRU = new ModeloRU();*/
+    
       
     public ListaUsuario(){
         pInicio = null;

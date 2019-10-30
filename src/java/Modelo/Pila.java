@@ -1,76 +1,48 @@
-///*
-// * To change this license header, choose License Headers in Project Properties.
-// * To change this template file, choose Tools | Templates
-// * and open the template in the editor.
-// */
-//package Modelo;
-//
-///**
-// *
-// * @author reuni
-// */
-//    
-//public class Pila {
-//    private PilaEstudiantes pRaiz;
-//    String nombre;
-//    String carnet;
-//    String fecha_nacimiento;
-//    
-//    
-//
-//    
-//    public Pila(){
-//        pRaiz = null;
-//        String nombre;
-//        String carnet;
-//        String fecha_nacimiento;
-//    
-//    }
-//    
-//    // Pila Vacia
-//    public boolean estaVacia(){
-//        return pRaiz == null;
-//    }
-//    
-//    // PUSH
-//    public void push(String nombre, String carnet, String fecha_nacimiento){
-//        PilaEstudiantes nuevo = new PilaEstudiantes(nombre, carnet, fecha_nacimiento);
-//        nuevo.setSuguiente(pRaiz);
-//        pRaiz = nuevo;
-//        //cElementos++;
-//    }
-//    
-//    //POP
-//    public int pop(){
-//        PilaEstudiantes auxiliar = pRaiz;
-//        auxiliar.setSuguiente(null);
-//        //terminar pop
-//    }
-//    
-//    //Valor Raiz
-//    public int valorRaiz(){
-//        return pRaiz.getDato();
-//    }
-//    
-//    //Tamaño de Pila
-////    public int cantidadElementos(){
-////        return cElementos;
-////    }
-//    
-//    //Limpiar la Pila
-//    public void limpiarPila(){
-//        while(!estaVacia()){
-//            pop();
-//        }
-//    }
-//    
-////    public void verElementos(){
-////       PilaEstudiantes aux;
-////       aux = pRaiz;
-////       while(null!=aux){
-////          JOptionPane.showMessageDialog(null, "Valor del elemento " + aux.getDato(), "Valor Elemento", JOptionPane.INFORMATION_MESSAGE); 
-////           aux = aux.getSuguiente();
-////       }
-////    }
-//}
-//
+
+package Modelo;
+
+public class Pila{
+    
+    private PilaEstudiante pRaiz;
+    int cElementos;
+    
+    public Pila(){
+    pRaiz = null;
+    cElementos = 0;
+    
+}
+
+    public Pila(int i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+     // Pila Vacia
+    public boolean estaVacia(){
+        return pRaiz == null;
+    }
+    
+     public void push(String nombre, String carnet, String born){
+        PilaEstudiante nuevo = new PilaEstudiante(nombre, carnet, born);
+        nuevo.setSiguiente(pRaiz);
+        pRaiz = nuevo;
+        cElementos++;
+    }
+    
+    //POP
+    public PilaEstudiante pop(){
+        PilaEstudiante auxiliar = pRaiz;
+        pRaiz = pRaiz.getSiguiente();
+        auxiliar.setSiguiente(null);
+        cElementos--;
+        return auxiliar;
+    }
+
+    public String getNumero() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Pila getSiguiente() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+
+}
