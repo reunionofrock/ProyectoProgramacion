@@ -7,6 +7,8 @@ package Controlador;
 
 import Modelo.Lista;
 import Modelo.ListaUsuario;
+import Modelo.Pila;
+import Modelo.PilaEstudiante;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -91,8 +93,10 @@ public class OperationServlet extends HttpServlet {
                 out.println("<input type=\"submit\" value=\"Usuario Nuevo?\" id=\"registro\" name=\"registro\"/> ");
                 out.println("</form>");
                 out.println("");
-                out.println("<form action=\"MostrarUsuario\" method=\"post\">");
+                
                 out.println("<p> Lista de Usuarios </p>");
+               
+                
                 HttpSession session = request.getSession();
                 Lista ListaU = null;
                 ListaU = (Lista) session.getAttribute("ListaU");
@@ -112,9 +116,7 @@ public class OperationServlet extends HttpServlet {
                 }
               
             }
-                
-                
-                
+                  
                 out.println("");
                 out.println(""); 
                 out.println("");
@@ -123,9 +125,32 @@ public class OperationServlet extends HttpServlet {
                 out.println("");
                 out.println("<p> Estudiantes </p>");
                 out.println("<form action=\"RegistroEstudiante\" method=\"post\">");
-                out.println("<input type=\"submit\" value=\"Estudiante Nuevo?\" id=\"RegistroEstudiante\" name=\"registroEstudiante\"/>");
+                out.println("<input type=\"submit\" value=\"Estudiante Nuevo?\"  name=\"registroEstudiante\"/>");
                 out.println("</form>");
-                out.println("<form action=\"MostrarEstudiante\" method=\"post\">");
+                
+//            String nombre = request.getParameter("nombre");
+//            String carnet = request.getParameter("carnet");
+//            String born = request.getParameter("born");
+//            
+////            HttpSession session = request.getSession();
+//            PilaEstudiante PilaU = null;
+//            PilaU = (PilaEstudiante) session.getAttribute("ListaU");
+//            PilaEstudiante Nodo = new PilaEstudiante(nombre, carnet, born);
+//              Nodo.setSiguiente(PilaU);
+//              PilaU = Nodo;
+//              session.setAttribute("ListaU", ListaU);
+//        
+//            if (PilaU == null){
+//                PilaU = new PilaEstudiante(nombre, carnet, born);
+//                session.setAttribute("ListaU", ListaU);
+//            }else{
+//              PilaEstudiante nodo1 = PilaU;
+//              while(nodo1!=null){
+//                 out.println("<h5>Datos " + nodo1.getNombre() + nodo1.getCarnet() + nodo1.getBorn() +" en Pila</h5>");               
+//                 nodo1 = nodo1.getSiguiente();
+//              }
+              
+                out.println("<form action=\"EstudiantePila\" method=\"post\">");
                 out.println("<input type=\"submit\" value=\"Lista de Estudiantes\" name=\"MostrarEstudiantes\"/>");
                 out.println("</form>");
                 out.println("");
@@ -136,7 +161,8 @@ public class OperationServlet extends HttpServlet {
                 out.println("");
                 out.println("</body>");
                 out.println("</html>");
-             }
+                }
+//            }
              else{
                 out.println("<!DOCTYPE html>");
                 out.println("<html>");
@@ -150,7 +176,7 @@ public class OperationServlet extends HttpServlet {
                 out.println("");
                 out.println("<p>Datos de inicio de sesion incorrectos</p>");
                 out.println("<p>Por favor vuelva a intentarlo</p>");
-                out.println("<form action= index.html method=\"post\">");
+                out.println("<form action= index.jsp method=\"post\">");
                 out.println("<input type=\"submit\" value=\"Intente de Nuevo\" name=\"volverbutton\"/> ");
                 out.println("</form>");
                 out.println("");
