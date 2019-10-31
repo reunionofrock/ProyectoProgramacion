@@ -47,9 +47,9 @@ public class RegistroEstudiante extends HttpServlet {
             out.println("<body>");
             out.println("<form action=\"EstudiantePila\"; method=\"post\">\n");
             out.println("<p>Ingrese Nombre de estudiante: </p>");
-            out.println("<p><input type=\"text\" name=\"estudiante\" placeholder=\"Ingrese Nombre \" required spellchek=\"false\" > </p>");
+            out.println("<p><input type=\"text\" name=\"nombre\" placeholder=\"Ingrese Nombre \" required spellchek=\"false\" > </p>");
             out.println("<p>Ingrese Carnet: </p>");
-            out.println("<p><input type=\"text\" name=\"Carnet\" placeholder=\"Ingrese contraseña\" required spellchek=\"false\" > </p>");
+            out.println("<p><input type=\"text\" name=\"carnet\" placeholder=\"Ingrese contraseña\" required spellchek=\"false\" > </p>");
             out.println("<p>Ingrese Fecha de Nacimiento: </p>");
             out.println("<p><input type=\"text\" name=\"born\" placeholder=\"Fecha de Nacimiento\" required spellchek=\"false\" > </p>");
             out.println("<input type=\"submit\" value=\"Registrar\" name=\"registrobutton\"/> \n");         

@@ -75,11 +75,8 @@ public class PilaEstudiante {
         this.siguiente = siguiente;
     }
 
-    public String getNumero() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
    
+
     
    
 }

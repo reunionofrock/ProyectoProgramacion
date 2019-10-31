@@ -5,6 +5,7 @@
  */
 package Controlador;
 
+import Modelo.Pila;
 import Modelo.PilaEstudiante;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -40,29 +41,39 @@ public class EstudiantePila extends HttpServlet {
             String nombre = request.getParameter("nombre");
             String carnet = request.getParameter("carnet");
             String born = request.getParameter("born");
-            
-            HttpSession session = request.getSession();
-            PilaEstudiante ListaU = null;
-            ListaU = (PilaEstudiante) session.getAttribute("ListaU");
-            PilaEstudiante nodo = new PilaEstudiante(nombre, carnet, born);
-              nodo.setSiguiente(ListaU);
-              ListaU = nodo;
-              session.setAttribute("ListaU", ListaU);
+         
+                Pila miPila= new Pila();
+                miPila.push(nombre, carnet, born);
+           
+                HttpSession session = request.getSession();
+                PilaEstudiante PilaU = null;
+                PilaU = (PilaEstudiante) session.getAttribute("PilaU");
+                PilaEstudiante nodo = new PilaEstudiante(nombre, carnet, born);
+                nodo.setSiguiente(PilaU);
+                PilaU = nodo;
+                session.setAttribute("PilaU", PilaU);
         
-            if (ListaU == null){
-                ListaU = new PilaEstudiante(nombre, carnet, born);
-                session.setAttribute("ListaU", ListaU);
-            }else{
-              PilaEstudiante nodo1 = ListaU;
-              while(nodo1!=null){
-                 out.println("<h5>Datos " + nodo1.getNombre() + nodo1.getCarnet() + nodo1.getBorn() +" en Pila</h5>");               
-                 nodo1 = nodo1.getSiguiente();
-              }
+                if (PilaU == null){
+                    PilaU = new PilaEstudiante(nombre,carnet, born);
+                    session.setAttribute("PilaU", PilaU);
+                }else{
+                    PilaEstudiante nodo1 = PilaU;
+                    while(nodo1!=null){
+                    out.println("<h5>Datos " + nodo1.getNombre() + nodo1.getCarnet() + nodo1.getBorn() + " en Lista</h5>");               
+                    nodo1 = nodo1.getSiguiente();
+                }
               
-             out.println("<input type=\"submit\" onClick=\"history.back()\" value=\"Regresar\" name=\"regresoButton\"/> \n");
+            }
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Estudiantes en la Pila</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<input type=\"submit\" onClick=\"history.back()\" value=\"Regresar\" name=\"regresoButton\"/> \n");
+            
             out.println("</body>");
             out.println("</html>");
-            }
         }
     }
 
