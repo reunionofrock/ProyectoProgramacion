@@ -62,7 +62,8 @@ public class UsuarioLista extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<form method=\"post\" action=\"index.html\">");
-            out.println("<div><H1 align=\"left\"><strong><input type=\"submit\" value=\"Regresar a Ingreso\" /></strong></H1></div>");       
+            out.println("<div><H1 align=\"left\"><strong><input type=\"submit\" value=\"Regresar a Ingreso\" /></strong></H1></div>");   
+            out.println("");
             out.println("</body>");
             out.println("</html>");
         }

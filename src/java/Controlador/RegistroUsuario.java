@@ -49,6 +49,7 @@ public class RegistroUsuario extends HttpServlet {
             out.println("<p><input type=\"password\" name=\"pass\" placeholder=\"Ingrese contraseña\" required spellchek=\"false\" > </p>");
             out.println("<input type=\"submit\" value=\"Registrar\" name=\"registrobutton\"/> \n");         
             out.println("</form>");
+            out.println("");
             out.println("<input type=\"submit\" onClick=\"history.back()\" value=\"Regresar\" name=\"regresoButton\"/> \n");         
             out.println("</body>");
             out.println("</html>");
