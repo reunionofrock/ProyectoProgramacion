@@ -12,9 +12,9 @@ public class Pila{
     
 }
 
-    public Pila(int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
+
+   
      // Pila Vacia
     public boolean estaVacia(){
         return pRaiz == null;
@@ -36,13 +36,7 @@ public class Pila{
         return auxiliar;
     }
 
-    public String getNumero() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public Pila getSiguiente() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
     
 
 }

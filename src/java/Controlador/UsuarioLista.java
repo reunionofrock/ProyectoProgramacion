@@ -40,6 +40,7 @@ public class UsuarioLista extends HttpServlet {
             
            String user = request.getParameter("user");
            String pass = request.getParameter("pass");
+           
            ListaUsuario miLista = new ListaUsuario();
            miLista.push(user, pass);
            
@@ -68,7 +69,7 @@ public class UsuarioLista extends HttpServlet {
             out.println("<title>DATOS LISTA</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<form method=\"post\" action=\"index.html\">"); 
+            out.println("<form method=\"post\" action=\"index.jsp\">"); 
             out.println("<div><H1 align=\"left\"><strong><input type=\"submit\" value=\"Regresar a Ingreso\" /></strong></H1></div>");        
             out.println("</body>");
             out.println("</html>");
