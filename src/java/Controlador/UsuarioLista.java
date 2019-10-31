@@ -9,6 +9,8 @@ import Modelo.Lista;
 import Modelo.ListaUsuario;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,36 +42,27 @@ public class UsuarioLista extends HttpServlet {
             
            String user = request.getParameter("user");
            String pass = request.getParameter("pass");
-           ListaUsuario miLista = new ListaUsuario();
-           miLista.push(user, pass);
+           HttpSession session = request.getSession();
+           ListaUsuario miLista = (ListaUsuario) session.getAttribute("ListaUsuario");
+           if(miLista==null){
+               miLista = new ListaUsuario();
+           }
            
-          HttpSession session = request.getSession();
-           Lista ListaU = null;
-           ListaU = (Lista) session.getAttribute("ListaU");
-           Lista nodo = new Lista(user,pass);
-              nodo.setSiguiente(ListaU);
-              ListaU = nodo;
-              session.setAttribute("ListaU", ListaU);
-        
-            if (ListaU == null){
-                ListaU = new Lista(user,pass);
-                session.setAttribute("ListaU", ListaU);
-            }else{
-              Lista nodo1 = ListaU;
-              while(nodo1!=null){
-                 out.println("<h5>Datos " + nodo1.getContraseña() + nodo1.getUsuario() +" en Lista</h5>");               
-                 nodo1 = nodo1.getSiguiente();
-              }
-              
-            }
+           //miLista.push(user, pass);
+           miLista.insertar(user, pass);
+           
+           miLista.verElementos();
+           
+           session.setAttribute("ListaUsuario", miLista);
+           
             out.println("<!DOCTYE html>");
             out.println("<html>");
             out.println("<head>");
             out.println("<title>DATOS LISTA</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<form method=\"post\" action=\"index.html\">"); 
-            out.println("<div><H1 align=\"left\"><strong><input type=\"submit\" value=\"Regresar a Ingreso\" /></strong></H1></div>");        
+            out.println("<form method=\"post\" action=\"index.html\">");
+            out.println("<div><H1 align=\"left\"><strong><input type=\"submit\" value=\"Regresar a Ingreso\" /></strong></H1></div>");       
             out.println("</body>");
             out.println("</html>");
         }
@@ -100,8 +93,12 @@ public class UsuarioLista extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+    {
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            System.out.print(ex);
+        }
     }
 
     /**

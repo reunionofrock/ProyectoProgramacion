@@ -42,7 +42,7 @@ public class RegistroUsuario extends HttpServlet {
             out.println("<h1>Crea un Usuario Nuevo </h1>");
             out.println("<h1>Porfavor llene los siguientes campos</h1>");         
             out.println("<body>");
-            out.println("<form action= \"UsuarioLista; method=\"post\">\n");
+            out.println("<form action= \"UsuarioLista\" method=\"post\">\n");
             out.println("<p>Ingrese nuevo Usuario: </p>");
             out.println("<p><input type=\"text\" name=\"user\" placeholder=\"Ingrese Id \" required spellchek=\"false\" > </p>");
             out.println("<p>Ingrese nueva Contraseña: </p>");
