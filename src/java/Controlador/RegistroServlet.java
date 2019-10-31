@@ -5,25 +5,20 @@
  */
 package Controlador;
 
-import Modelo.Lista;
-import Modelo.ListaUsuario;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author reuni
  */
-@WebServlet(name = "UsuarioLista", urlPatterns = {"/UsuarioLista"})
-public class UsuarioLista extends HttpServlet {
+@WebServlet(name = "RegistroServlet", urlPatterns = {"/RegistroServlet"})
+public class RegistroServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,43 +34,24 @@ public class UsuarioLista extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            
-           String user = request.getParameter("user");
-           String pass = request.getParameter("pass");
-           
-           ListaUsuario miLista = new ListaUsuario();
-           miLista.push(user, pass);
-           
-          HttpSession session = request.getSession();
-           Lista ListaU = null;
-           ListaU = (Lista) session.getAttribute("ListaU");
-           Lista nodo = new Lista(user,pass);
-              nodo.setSiguiente(ListaU);
-              ListaU = nodo;
-              session.setAttribute("ListaU", ListaU);
-        
-            if (ListaU == null){
-                ListaU = new Lista(user,pass);
-                session.setAttribute("ListaU", ListaU);
-            }else{
-              Lista nodo1 = ListaU;
-              while(nodo1!=null){
-                 out.println("<h5>Datos " + nodo1.getContraseña() + nodo1.getUsuario() +" en Lista</h5>");               
-                 nodo1 = nodo1.getSiguiente();
-              }
-              
-            }
-            out.println("<!DOCTYE html>");
+            out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>DATOS LISTA</title>");
+            out.println("<title>Registro de Usuario Nuevo</title>");            
             out.println("</head>");
+            out.println("<h1>Crea un Usuario Nuevo </h1>");
+            out.println("<h1>Porfavor llene los siguientes campos</h1>");
+                        
             out.println("<body>");
-            out.println("<form method=\"post\" action=\"index.jsp\">"); 
-            out.println("<div><H1 align=\"left\"><strong><input type=\"submit\" value=\"Regresar a Ingreso\" /></strong></H1></div>");        
+            out.println("<p>Ingrese nuevo Usuario: </p>");
+            out.println("<p><input type=\"text\" name=\"user\" placeholder=\"Ingrese Id \" required spellchek=\"false\" > </p>");
+            out.println("<p>Ingrese nueva Contraseña: </p>");
+            out.println("<p><input type=\"password\" name=\"pass\" placeholder=\"Ingrese contraseña\" required spellchek=\"false\" > </p>");
+            out.println("<form onclick=guardar(); method=\"post\">\n");
+            out.println("<input type=\"submit\" value=\"Registrar\" name=\"registrobutton\"/> \n");         
+            out.println("</form>");
             out.println("</body>");
             out.println("</html>");
-
         }
     }
 
@@ -104,12 +80,8 @@ public class UsuarioLista extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    {
-        try {
-            processRequest(request, response);
-        } catch (Exception ex) {
-            System.out.print(ex);
-        }
+            throws ServletException, IOException {
+        processRequest(request, response);
     }
 
     /**
@@ -121,7 +93,5 @@ public class UsuarioLista extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
- 
 
 }
