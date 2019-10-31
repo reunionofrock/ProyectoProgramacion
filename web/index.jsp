@@ -11,9 +11,13 @@
         
         
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Inicio Sesion</title>
+        <link rel="stylesheet" href="css/newcss.css"/>
+        <<script src="js/newjavascript.js"></script>
+        <title>Inicio Sesion</title>                             
     </head>
     <body>
+        
+    
         <form action="OperationServlet" method="post">
             <div>
                 
@@ -27,9 +31,6 @@
             </div>
         
         </form>
-        
-        
-        
-        
+
     </body>
 </html>
