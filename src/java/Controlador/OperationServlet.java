@@ -128,27 +128,30 @@ public class OperationServlet extends HttpServlet {
                 out.println("<input type=\"submit\" value=\"Estudiante Nuevo?\"  name=\"registroEstudiante\"/>");
                 out.println("</form>");
                 
-//            String nombre = request.getParameter("nombre");
-//            String carnet = request.getParameter("carnet");
-//            String born = request.getParameter("born");
-//            
-////            HttpSession session = request.getSession();
-//            PilaEstudiante PilaU = null;
-//            PilaU = (PilaEstudiante) session.getAttribute("ListaU");
-//            PilaEstudiante Nodo = new PilaEstudiante(nombre, carnet, born);
-//              Nodo.setSiguiente(PilaU);
-//              PilaU = Nodo;
-//              session.setAttribute("ListaU", ListaU);
-//        
-//            if (PilaU == null){
-//                PilaU = new PilaEstudiante(nombre, carnet, born);
-//                session.setAttribute("ListaU", ListaU);
-//            }else{
-//              PilaEstudiante nodo1 = PilaU;
-//              while(nodo1!=null){
-//                 out.println("<h5>Datos " + nodo1.getNombre() + nodo1.getCarnet() + nodo1.getBorn() +" en Pila</h5>");               
-//                 nodo1 = nodo1.getSiguiente();
-//              }
+            String nombre = request.getParameter("nombre");
+            String carnet = request.getParameter("carnet");
+            String born = request.getParameter("born");
+            
+               HttpSession pilaEst = request.getSession();
+                PilaEstudiante PilaU = null;
+                PilaU = (PilaEstudiante) pilaEst.getAttribute("ListaU");
+                PilaEstudiante Nodo = new PilaEstudiante(nombre, carnet, born);
+                Nodo.setSiguiente(PilaU);
+                PilaU = Nodo;
+                pilaEst.setAttribute("ListaU", ListaU);
+        
+                OperationServlet PilaE=null;
+                PilaE = (OperationServlet)pilaEst.getAttribute("PilaE");
+                
+            if (PilaU == null){
+                PilaU = new PilaEstudiante(nombre, carnet, born);
+                pilaEst.setAttribute("ListaU", ListaU);
+            }else{
+              PilaEstudiante nodo1 = PilaU;
+              while(nodo1!=null){
+                 out.println("<h5>Datos " + nodo1.getNombre() + nodo1.getCarnet() + nodo1.getBorn() +" en Pila</h5>");               
+                 nodo1 = nodo1.getSiguiente();
+              }
               
                 out.println("<form action=\"EstudiantePila\" method=\"post\">");
                 out.println("<input type=\"submit\" value=\"Lista de Estudiantes\" name=\"MostrarEstudiantes\"/>");
@@ -162,7 +165,7 @@ public class OperationServlet extends HttpServlet {
                 out.println("</body>");
                 out.println("</html>");
                 }
-//            }
+            }
              else{
                 out.println("<!DOCTYPE html>");
                 out.println("<html>");
